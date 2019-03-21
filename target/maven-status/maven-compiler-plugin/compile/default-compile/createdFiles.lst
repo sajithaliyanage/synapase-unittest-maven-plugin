@@ -1,0 +1,5 @@
+org/wso2/unittest/SynapseTestCaseFileReader.class
+org/wso2/unittest/Constants.class
+org/wso2/unittest/TCPClient.class
+org/wso2/unittest/UnitTestClient.class
+org/wso2/unittest/UnitTestCasesMojo.class
