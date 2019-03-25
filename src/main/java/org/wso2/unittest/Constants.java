@@ -25,7 +25,9 @@ class Constants {
 
     private Constants() {}
 
+    static final String ARTIFACTS = "artifacts";
     static final String ARTIFACT = "artifact";
-    static final String ARTIFACT_FILE = "artifact-file";
+    static final String TEST_ARTIFACT = "test-artifact";
+    static final String SUPPORTIVE_ARTIFACTS = "supportive-artifacts";
 
 }

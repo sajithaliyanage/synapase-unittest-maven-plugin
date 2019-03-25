@@ -18,9 +18,7 @@
 
 package org.wso2.unittest;
 
-import org.apache.axiom.om.OMAbstractFactory;
 import org.apache.axiom.om.OMElement;
-import org.apache.axiom.om.OMFactory;
 import org.apache.axiom.om.util.AXIOMUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.plugin.logging.Log;
@@ -32,16 +30,21 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
-import static org.wso2.unittest.Constants.ARTIFACT;
-import static org.wso2.unittest.Constants.ARTIFACT_FILE;
+import static org.wso2.unittest.Constants.*;
 
 /**
  * SynapseTestCase file read class in unit test framework.
  */
 class SynapseTestCaseFileReader {
 
-    private SynapseTestCaseFileReader() {}
+    /**
+     * private constructor of the SynapseTestCaseFileReader class.
+     */
+    private SynapseTestCaseFileReader() {
+    }
+
     private static Log log;
+
     /**
      * Check that SynapseTestCase data includes artifact data.
      * If not read artifact from given file and append data into the artifact data
@@ -55,50 +58,13 @@ class SynapseTestCaseFileReader {
             OMElement importedXMLFile = AXIOMUtil.stringToOM(synapseTestCaseFileAsString);
 
             getLog().info("Checking SynapseTestCase file contains artifact data");
+            QName qualifiedArtifacts = new QName("", ARTIFACTS, "");
+            OMElement artifactsNode = importedXMLFile.getFirstChildWithName(qualifiedArtifacts);
 
-            //Read artifact from SynapseTestCase file
-            QName qualifiedArtifact = new QName("", ARTIFACT, "");
-            OMElement artifactNode = importedXMLFile.getFirstChildWithName(qualifiedArtifact);
+            processTestArtifactData(artifactsNode);
 
-            //check if artifact or artifact-file available in SynapseTestCase file
-            if (artifactNode == null) {
-
-                getLog().info("SynapseTestCase file does not contains artifact data. Checking for artifact file data");
-                QName qualifiedArtifactFile = new QName("", ARTIFACT_FILE, "");
-                OMElement artifactFileNode = importedXMLFile.getFirstChildWithName(qualifiedArtifactFile);
-                String artifactFilePath = artifactFileNode.getText();
-
-
-                String artifactFileAsString = FileUtils.readFileToString(new File(artifactFilePath));
-                artifactNode = AXIOMUtil.stringToOM(artifactFileAsString);
-
-                //check artifact-file contains artifact data
-                if (artifactNode == null) {
-
-                    throw new IOException
-                            ("SynapseTestCase file does not contains artifact data or artifact file details");
-
-                } else {
-
-                    getLog().info("Artifact file data imported to the SynapseTestCase file data");
-
-                    //create new tag name artifact to add artifact-file data as a child
-                    OMFactory fac = OMAbstractFactory.getOMFactory();
-                    OMElement artifactNewNode = fac.createOMElement(new QName(ARTIFACT));
-                    artifactNewNode.addChild(artifactNode);
-
-                    //add artifact node to the SynapseTestCase data
-                    importedXMLFile.addChild(artifactNewNode);
-
-                    //remove ARTIFACT-FILE tag from SynapseTestCase data
-                    Iterator item = importedXMLFile.getChildrenWithName(new QName(ARTIFACT_FILE));
-                    if (item.hasNext()) {
-                        item.next();
-                        item.remove();
-                    }
-                }
-
-            }
+            //Read supportive-artifacts data
+            processSupportiveArtifactData(artifactsNode);
 
             return importedXMLFile.toString();
 
@@ -109,9 +75,77 @@ class SynapseTestCaseFileReader {
         return null;
     }
 
+    /**
+     * Method of processing test-artifact data.
+     * Reads artifacts from user defined file and append it to the artifact node
+     *
+     * @param  artifactsNode artifact data contain node
+     */
+    private static void processTestArtifactData(OMElement artifactsNode) throws IOException, XMLStreamException {
+        //Read artifacts from SynapseTestCase file
+        QName qualifiedTestArtifact = new QName("", TEST_ARTIFACT, "");
+        OMElement testArtifactNode = artifactsNode.getFirstChildWithName(qualifiedTestArtifact);
+
+        //Read test-artifact data
+        QName qualifiedArtifact = new QName("", ARTIFACT, "");
+        OMElement testArtifactFileNode = testArtifactNode.getFirstChildWithName(qualifiedArtifact);
+
+        String testArtifactFileAsString;
+        if (!testArtifactFileNode.getText().isEmpty()) {
+            String testArtifactFilePath = testArtifactFileNode.getText();
+            testArtifactFileAsString = FileUtils.readFileToString(new File(testArtifactFilePath));
+        } else {
+            throw new IOException("Test artifact does not contain configuration file path");
+        }
+
+        if (testArtifactFileAsString != null) {
+            //add test-artifact data as a child
+            OMElement testArtifactDataNode = AXIOMUtil.stringToOM(testArtifactFileAsString);
+            testArtifactFileNode.removeChildren();
+            testArtifactFileNode.addChild(testArtifactDataNode);
+        } else {
+            throw new IOException("Test artifact does not contain any configuration data");
+        }
+    }
+
+    /**
+     * Method of processing supportive-artifact data.
+     * Reads artifacts from user defined file and append it to the artifact node
+     *
+     * @param  artifactsNode artifact data contain node
+     */
+    private static void processSupportiveArtifactData(OMElement artifactsNode) throws IOException, XMLStreamException {
+        QName qualifiedSupportiveArtifact = new QName("", SUPPORTIVE_ARTIFACTS, "");
+        OMElement supportiveArtifactNode = artifactsNode.getFirstChildWithName(qualifiedSupportiveArtifact);
+
+        Iterator artifactIterator = supportiveArtifactNode.getChildElements();
+        while (artifactIterator.hasNext()) {
+            OMElement artifact = (OMElement) artifactIterator.next();
+
+            String supportiveArtifactFileAsString;
+            if (!artifact.getText().isEmpty()) {
+                String artifactFilePath = artifact.getText();
+                supportiveArtifactFileAsString = FileUtils.readFileToString(new File(artifactFilePath));
+            } else {
+                throw new IOException("Supportive artifact does not contain configuration file path");
+            }
+
+            if (supportiveArtifactFileAsString != null) {
+                //add test-artifact data as a child
+                OMElement supportiveArtifactDataNode = AXIOMUtil.stringToOM(supportiveArtifactFileAsString);
+                artifact.removeChildren();
+                artifact.addChild(supportiveArtifactDataNode);
+            } else {
+                throw new IOException("Supportive artifact does not contain any configuration data");
+            }
+        }
+    }
+
+    /**
+     * Method of initiating logger.
+     */
     private static Log getLog() {
-        if ( log == null )
-        {
+        if (log == null) {
             log = new SystemStreamLog();
         }
 

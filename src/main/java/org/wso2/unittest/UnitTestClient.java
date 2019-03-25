@@ -40,17 +40,18 @@ class UnitTestClient {
 
             //process SynapseTestCase data for send to the server
             String deployableMessage = SynapseTestCaseFileReader.processArtifactData(synapseTestCaseFilePath);
+            getLog().info(deployableMessage);
 
-            if (deployableMessage != null) {
-                //create tcp connection, send SynapseTestCase file to server and get the response from the server
-                TCPClient tcpClient = new TCPClient(synapseHost, synapsePort);
-                tcpClient.writeData(deployableMessage);
-                responseFromServer = tcpClient.readData();
-                tcpClient.closeSocket();
-
-            } else {
-                getLog().error("Error in creating deployable message");
-            }
+//            if (deployableMessage != null) {
+//                //create tcp connection, send SynapseTestCase file to server and get the response from the server
+//                TCPClient tcpClient = new TCPClient(synapseHost, synapsePort);
+//                tcpClient.writeData(deployableMessage);
+//                responseFromServer = tcpClient.readData();
+//                tcpClient.closeSocket();
+//
+//            } else {
+//                getLog().error("Error in creating deployable message");
+//            }
 
             return responseFromServer;
 
