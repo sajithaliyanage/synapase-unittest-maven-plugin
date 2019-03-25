@@ -24,12 +24,13 @@ import org.apache.maven.plugin.logging.SystemStreamLog;
 /**
  * SynapseTestCase file read class in unit test framework.
  */
-public class UnitTestClient {
+class UnitTestClient {
 
     private static Log log;
+    private UnitTestClient() {}
 
     /**
-     * Main method of the synapse unit testing client.
+     * static method of executing the synapse unit testing client.
      */
     static String executeTests(String synapseTestCaseFilePath, String synapseHost, String synapsePort) {
 
@@ -61,7 +62,7 @@ public class UnitTestClient {
         return responseFromServer;
     }
 
-    static Log getLog() {
+    private static Log getLog() {
         if (log == null) {
             log = new SystemStreamLog();
         }

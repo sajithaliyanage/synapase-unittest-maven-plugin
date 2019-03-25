@@ -1,3 +1,4 @@
+org/wso2/unittest/SynapseServer.class
 org/wso2/unittest/SynapseTestCaseFileReader.class
 org/wso2/unittest/Constants.class
 org/wso2/unittest/TCPClient.class

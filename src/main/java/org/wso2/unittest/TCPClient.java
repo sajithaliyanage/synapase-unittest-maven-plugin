@@ -98,7 +98,7 @@ class TCPClient {
         }
     }
 
-    static Log getLog() {
+    private static Log getLog() {
         if ( log == null )
         {
             log = new SystemStreamLog();
