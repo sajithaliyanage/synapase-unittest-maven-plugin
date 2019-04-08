@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,14 +16,15 @@
  * under the License.
  */
 
-package org.wso2.unittest;
+package org.wso2.synapse.unittest;
 
 /**
  * Constants for unit testing framework for synapse.
  */
 class Constants {
 
-    private Constants() {}
+    private Constants() {
+    }
 
     static final String ARTIFACTS = "artifacts";
     static final String ARTIFACT = "artifact";

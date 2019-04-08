@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.unittest;
+package org.wso2.synapse.unittest;
 
 import org.apache.axiom.om.OMElement;
 import org.apache.axiom.om.util.AXIOMUtil;
@@ -28,9 +28,8 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
-
-import static org.wso2.unittest.Constants.*;
 
 /**
  * SynapseTestCase file read class in unit test framework.
@@ -58,7 +57,7 @@ class SynapseTestCaseFileReader {
             OMElement importedXMLFile = AXIOMUtil.stringToOM(synapseTestCaseFileAsString);
 
             getLog().info("Checking SynapseTestCase file contains artifact data");
-            QName qualifiedArtifacts = new QName("", ARTIFACTS, "");
+            QName qualifiedArtifacts = new QName("", Constants.ARTIFACTS, "");
             OMElement artifactsNode = importedXMLFile.getFirstChildWithName(qualifiedArtifacts);
 
             processTestArtifactData(artifactsNode);
@@ -79,15 +78,15 @@ class SynapseTestCaseFileReader {
      * Method of processing test-artifact data.
      * Reads artifacts from user defined file and append it to the artifact node
      *
-     * @param  artifactsNode artifact data contain node
+     * @param artifactsNode artifact data contain node
      */
     private static void processTestArtifactData(OMElement artifactsNode) throws IOException, XMLStreamException {
         //Read artifacts from SynapseTestCase file
-        QName qualifiedTestArtifact = new QName("", TEST_ARTIFACT, "");
+        QName qualifiedTestArtifact = new QName("", Constants.TEST_ARTIFACT, "");
         OMElement testArtifactNode = artifactsNode.getFirstChildWithName(qualifiedTestArtifact);
 
         //Read test-artifact data
-        QName qualifiedArtifact = new QName("", ARTIFACT, "");
+        QName qualifiedArtifact = new QName("", Constants.ARTIFACT, "");
         OMElement testArtifactFileNode = testArtifactNode.getFirstChildWithName(qualifiedArtifact);
 
         String testArtifactFileAsString;
@@ -112,13 +111,17 @@ class SynapseTestCaseFileReader {
      * Method of processing supportive-artifact data.
      * Reads artifacts from user defined file and append it to the artifact node
      *
-     * @param  artifactsNode artifact data contain node
+     * @param artifactsNode artifact data contain node
      */
     private static void processSupportiveArtifactData(OMElement artifactsNode) throws IOException, XMLStreamException {
-        QName qualifiedSupportiveArtifact = new QName("", SUPPORTIVE_ARTIFACTS, "");
+        QName qualifiedSupportiveArtifact = new QName("", Constants.SUPPORTIVE_ARTIFACTS, "");
         OMElement supportiveArtifactNode = artifactsNode.getFirstChildWithName(qualifiedSupportiveArtifact);
 
-        Iterator artifactIterator = supportiveArtifactNode.getChildElements();
+        Iterator artifactIterator = Collections.emptyIterator();
+        if (supportiveArtifactNode != null) {
+            artifactIterator = supportiveArtifactNode.getChildElements();
+        }
+
         while (artifactIterator.hasNext()) {
             OMElement artifact = (OMElement) artifactIterator.next();
 

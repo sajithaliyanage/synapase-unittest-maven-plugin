@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.unittest;
+package org.wso2.synapse.unittest;
 
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugin.logging.SystemStreamLog;
@@ -27,7 +27,9 @@ import org.apache.maven.plugin.logging.SystemStreamLog;
 class UnitTestClient {
 
     private static Log log;
-    private UnitTestClient() {}
+
+    private UnitTestClient() {
+    }
 
     /**
      * static method of executing the synapse unit testing client.
@@ -40,18 +42,17 @@ class UnitTestClient {
 
             //process SynapseTestCase data for send to the server
             String deployableMessage = SynapseTestCaseFileReader.processArtifactData(synapseTestCaseFilePath);
-            getLog().info(deployableMessage);
 
-//            if (deployableMessage != null) {
-//                //create tcp connection, send SynapseTestCase file to server and get the response from the server
-//                TCPClient tcpClient = new TCPClient(synapseHost, synapsePort);
-//                tcpClient.writeData(deployableMessage);
-//                responseFromServer = tcpClient.readData();
-//                tcpClient.closeSocket();
-//
-//            } else {
-//                getLog().error("Error in creating deployable message");
-//            }
+            if (deployableMessage != null) {
+                //create tcp connection, send SynapseTestCase file to server and get the response from the server
+                TCPClient tcpClient = new TCPClient(synapseHost, synapsePort);
+                tcpClient.writeData(deployableMessage);
+                responseFromServer = tcpClient.readData();
+                tcpClient.closeSocket();
+
+            } else {
+                getLog().error("Error in creating deployable message");
+            }
 
             return responseFromServer;
 

@@ -1,6 +1,6 @@
-org/wso2/unittest/SynapseServer.class
-org/wso2/unittest/SynapseTestCaseFileReader.class
-org/wso2/unittest/Constants.class
-org/wso2/unittest/TCPClient.class
-org/wso2/unittest/UnitTestClient.class
-org/wso2/unittest/UnitTestCasesMojo.class
+org/wso2/synapse/unittest/SynapseTestCaseFileReader.class
+org/wso2/synapse/unittest/TCPClient.class
+org/wso2/synapse/unittest/SynapseServer.class
+org/wso2/synapse/unittest/UnitTestClient.class
+org/wso2/synapse/unittest/UnitTestCasesMojo.class
+org/wso2/synapse/unittest/Constants.class
