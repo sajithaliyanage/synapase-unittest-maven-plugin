@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e4d7e916-1f26-409b-8953-a8ac064b46f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/TCPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/org.wso2/synapse-unit-test-maven-plugin/plugin-help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/org.wso2/synapse-unit-test-maven-plugin/plugin-help.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/wso2/synapse/unittest/TCPClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/wso2/synapse/unittest/TCPClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/wso2/synapse/unittest/UnitTestCasesMojo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/wso2/synapse/unittest/UnitTestCasesMojo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/synapse-unit-test-maven-plugin-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/synapse-unit-test-maven-plugin-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-785">
-              <caret line="93" column="85" lean-forward="true" selection-start-line="93" selection-start-column="85" selection-end-line="93" selection-end-column="85" />
+            <state relative-caret-position="553">
+              <caret line="176" column="38" lean-forward="true" selection-start-line="176" selection-start-column="38" selection-end-line="176" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1554962985047" expanded="true" signature="1606:1687" ph="..." />
@@ -253,7 +244,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24175824" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24175824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -270,7 +261,7 @@
       <window_info anchor="bottom" id="CheckStyle" order="7" weight="0.32959184" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32959184" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32857144" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -389,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-785">
-          <caret line="93" column="85" lean-forward="true" selection-start-line="93" selection-start-column="85" selection-end-line="93" selection-end-column="85" />
+        <state relative-caret-position="553">
+          <caret line="176" column="38" lean-forward="true" selection-start-line="176" selection-start-column="38" selection-end-line="176" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1554962985047" expanded="true" signature="1606:1687" ph="..." />
