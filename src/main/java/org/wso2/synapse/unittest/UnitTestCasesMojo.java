@@ -226,9 +226,10 @@ public class UnitTestCasesMojo extends AbstractMojo {
      * @return if available true else false
      */
     private static boolean checkPortAvailability(int port) {
+        System.out.println("####### "  + port);
         boolean isAvailable;
         try (Socket socket = new Socket()) {
-            socket.connect(new InetSocketAddress("localhost", port));
+            socket.connect(new InetSocketAddress("127.0.0.1", port));
             isAvailable = false;
         } catch (IOException e) {
             isAvailable = true;
