@@ -23,7 +23,10 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -99,7 +102,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
                 String filename = file.getName();
                 if (filename.endsWith(".xml") || filename.endsWith(".XML")) {
 
-                    fileNamesWithPaths.add(testFileFolder + "/" + filename);
+                    fileNamesWithPaths.add(testFileFolder + File.separator + filename);
                 }
             }
         }
@@ -174,9 +177,9 @@ public class UnitTestCasesMojo extends AbstractMojo {
     private void stopTestingServer() {
 
         if (!synapseServer.getLocalServer().isEmpty()) {
-
             try {
                 getLog().info("Stopping unit testing agent runs on port " + synapseServer.getUnitTestPort());
+                BufferedReader bufferReader;
 
                 //check running operating system
                 if (System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -185,10 +188,10 @@ public class UnitTestCasesMojo extends AbstractMojo {
                     Process proc =
                             runTime.exec("cmd /c netstat -ano | findstr " + synapseServer.getUnitTestPort());
 
-                    BufferedReader stdInput = new BufferedReader(new
+                    bufferReader = new BufferedReader(new
                             InputStreamReader(proc.getInputStream()));
 
-                    String stream = stdInput.readLine();
+                    String stream = bufferReader.readLine();
                     if (stream != null) {
                         int index = stream.lastIndexOf(' ');
                         String pid = stream.substring(index);
@@ -199,17 +202,18 @@ public class UnitTestCasesMojo extends AbstractMojo {
 
                 } else {
                     Process pr = Runtime.getRuntime().exec("lsof -t -i:" + synapseServer.getUnitTestPort());
-                    BufferedReader read = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-                    String pid = read.readLine();
+                    bufferReader = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+                    String pid = bufferReader.readLine();
 
                     getLog().info("Unit testing agent runs with PID of " + pid);
                     Runtime.getRuntime().exec("kill -9 " + pid);
                 }
 
+                bufferReader.close();
                 getLog().info("Unit testing agent stopped");
 
             } catch (Exception e) {
-                getLog().error("Error in closing the server");
+                getLog().error("Error in closing the server", e);
             }
         }
 

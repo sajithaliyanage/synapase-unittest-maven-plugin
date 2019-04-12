@@ -20,7 +20,11 @@ package org.wso2.synapse.unittest;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugin.logging.SystemStreamLog;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 
 /**
@@ -29,6 +33,7 @@ import java.net.Socket;
 class TCPClient {
 
     private Socket clientSocket;
+    private OutputStream outputStream;
     private static Log log;
 
     /**
@@ -76,13 +81,13 @@ class TCPClient {
     void writeData(String messageToBeSent) {
 
         try {
-            OutputStream outputStream = clientSocket.getOutputStream();
+            outputStream = clientSocket.getOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(messageToBeSent);
             outputStream.flush();
 
             getLog().info("Artifact data and test cases data send to the synapse agent successfully");
-        } catch (Exception e) {
+        } catch (IOException e) {
             getLog().error("Error while sending deployable data to the synapse agent ", e);
         }
     }
@@ -92,6 +97,7 @@ class TCPClient {
      */
     void closeSocket() {
         try {
+            outputStream.close();
             clientSocket.close();
         } catch (IOException e) {
             getLog().error("Error while closing TCP client socket connection", e);
