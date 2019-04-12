@@ -144,7 +144,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
 
         //check already has unit testing server
         if (!synapseServer.getLocalServer().isEmpty()) {
-            String[] cmd = {synapseServer.getLocalServer().get(0), "unitTest", synapseServer.getUnitTestPort()};
+            String[] cmd = {"/bin/bash", "-c", synapseServer.getLocalServer().get(0), "unitTest", synapseServer.getUnitTestPort()};
             Runtime.getRuntime().exec(cmd);
 
             getLog().info("Starting unit testing agent of path - " + synapseServer.getLocalServer().get(0));
@@ -226,7 +226,6 @@ public class UnitTestCasesMojo extends AbstractMojo {
      * @return if available true else false
      */
     private static boolean checkPortAvailability(int port) {
-        System.out.println("####### "  + port);
         boolean isAvailable;
         try (Socket socket = new Socket()) {
             socket.connect(new InetSocketAddress("127.0.0.1", port));
