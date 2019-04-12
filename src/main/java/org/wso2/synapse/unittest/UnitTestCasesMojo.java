@@ -145,16 +145,10 @@ public class UnitTestCasesMojo extends AbstractMojo {
         //check already has unit testing server
         if (!synapseServer.getLocalServer().isEmpty()) {
             String[] cmd = { synapseServer.getLocalServer().get(0), "unitTest", synapseServer.getUnitTestPort()};
-            Process p = Runtime.getRuntime().exec(cmd);
+            Runtime.getRuntime().exec(cmd);
 
             getLog().info("Starting unit testing agent of path - " + synapseServer.getLocalServer().get(0));
             getLog().info("Waiting for testing agent initialization");
-
-            String line;
-            BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            while ((line = input.readLine()) != null) {
-                System.out.println(line);
-            }
 
             //check port availability
             boolean isAvailable = true;
