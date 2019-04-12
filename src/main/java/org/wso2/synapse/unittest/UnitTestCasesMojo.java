@@ -152,7 +152,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
 
             //check port availability
             boolean isAvailable = true;
-            long timeoutExpiredMs = System.currentTimeMillis() + 45000;
+            long timeoutExpiredMs = System.currentTimeMillis() + 60000;
             while (isAvailable) {
                 long waitMillis = timeoutExpiredMs - System.currentTimeMillis();
                 isAvailable = checkPortAvailability(Integer.parseInt(synapseServer.getUnitTestPort()));
