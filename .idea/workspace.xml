@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e4d7e916-1f26-409b-8953-a8ac064b46f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/synapse-unit-test-maven-plugin-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/synapse-unit-test-maven-plugin-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +30,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+            <state relative-caret-position="213">
+              <caret line="154" column="67" selection-start-line="154" selection-start-column="67" selection-end-line="154" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1555072592678" expanded="true" signature="1606:1687" ph="..." />
+                <marker date="1555080229010" expanded="true" signature="1606:1687" ph="..." />
               </folding>
             </state>
           </provider>
@@ -242,6 +244,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24175824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -379,11 +382,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+        <state relative-caret-position="213">
+          <caret line="154" column="67" selection-start-line="154" selection-start-column="67" selection-end-line="154" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1555072592678" expanded="true" signature="1606:1687" ph="..." />
+            <marker date="1555080229010" expanded="true" signature="1606:1687" ph="..." />
           </folding>
         </state>
       </provider>
