@@ -155,7 +155,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
             long timeoutExpiredMs = System.currentTimeMillis() + 120000;
             while (isAvailable) {
                 long waitMillis = timeoutExpiredMs - System.currentTimeMillis();
-                isAvailable = checkPortAvailability(Integer.parseInt(synapseServer.getUnitTestPort()));
+                isAvailable = checkPortAvailability(Integer.parseInt("9443"));
 
                 if (waitMillis <= 0) {
                     // timeout expired
