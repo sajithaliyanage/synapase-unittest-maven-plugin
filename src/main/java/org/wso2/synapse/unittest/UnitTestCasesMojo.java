@@ -140,26 +140,33 @@ public class UnitTestCasesMojo extends AbstractMojo {
     /**
      * Start the Unit testing agent server if user defined it in configuration.
      */
-    private void startTestingServer() throws IOException {
+    private void startTestingServer() throws IOException  {
+
+        String unitTestPort = synapseServer.getUnitTestPort();
 
         //check already has unit testing server
         if (!synapseServer.getLocalServer().isEmpty()) {
-            String[] cmd = { synapseServer.getLocalServer().get(0), "unitTest", synapseServer.getUnitTestPort()};
+            String synapseServerPath = synapseServer.getLocalServer().get(0);
+
+            //execute local unit test server by given path and port
+            String[] cmd = { synapseServerPath, "unitTest", unitTestPort};
             Runtime.getRuntime().exec(cmd);
 
-            getLog().info("Starting unit testing agent of path - " + synapseServer.getLocalServer().get(0));
+            getLog().info("Starting unit testing agent of path - " + synapseServerPath);
             getLog().info("Waiting for testing agent initialization");
 
-            //check port availability
-            boolean isAvailable = true;
+            //check port availability - unit test server started or not
+            boolean isServerNotStarted = true;
+
+            //set timeout time to 120 seconds
             long timeoutExpiredMs = System.currentTimeMillis() + 120000;
-            while (isAvailable) {
+            while (isServerNotStarted) {
                 long waitMillis = timeoutExpiredMs - System.currentTimeMillis();
-                isAvailable = checkPortAvailability(Integer.parseInt("9443"));
+                isServerNotStarted = checkPortAvailability(Integer.parseInt(unitTestPort));
 
                 if (waitMillis <= 0) {
                     // timeout expired
-                    throw new IOException("Connection refused for service in port - " + synapseServer.getUnitTestPort());
+                    throw new IOException("Connection refused for service in port - " + unitTestPort);
                 }
             }
 
@@ -176,9 +183,11 @@ public class UnitTestCasesMojo extends AbstractMojo {
      */
     private void stopTestingServer() {
 
+        String unitTestPort = synapseServer.getUnitTestPort();
+
         if (!synapseServer.getLocalServer().isEmpty()) {
             try {
-                getLog().info("Stopping unit testing agent runs on port " + synapseServer.getUnitTestPort());
+                getLog().info("Stopping unit testing agent runs on port " + unitTestPort);
                 BufferedReader bufferReader;
 
                 //check running operating system
@@ -186,7 +195,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
 
                     Runtime runTime = Runtime.getRuntime();
                     Process proc =
-                            runTime.exec("cmd /c netstat -ano | findstr " + synapseServer.getUnitTestPort());
+                            runTime.exec("cmd /c netstat -ano | findstr " + unitTestPort);
 
                     bufferReader = new BufferedReader(new
                             InputStreamReader(proc.getInputStream()));
@@ -201,7 +210,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
                     }
 
                 } else {
-                    Process pr = Runtime.getRuntime().exec("lsof -t -i:" + synapseServer.getUnitTestPort());
+                    Process pr = Runtime.getRuntime().exec("lsof -t -i:" + unitTestPort);
                     bufferReader = new BufferedReader(new InputStreamReader(pr.getInputStream()));
                     String pid = bufferReader.readLine();
 
@@ -225,15 +234,15 @@ public class UnitTestCasesMojo extends AbstractMojo {
      * @param port port which want to check availability
      * @return if available true else false
      */
-    private static boolean checkPortAvailability(int port) {
-        boolean isAvailable;
+    private boolean checkPortAvailability(int port) {
+        boolean isPortAvailable;
         try (Socket socket = new Socket()) {
-            socket.connect(new InetSocketAddress("127.0.0.1", port));
-            isAvailable = false;
+            socket.connect(new InetSocketAddress(synapseServer.getHost(), port));
+            isPortAvailable = false;
         } catch (IOException e) {
-            isAvailable = true;
+            isPortAvailable = true;
         }
 
-        return isAvailable;
+        return isPortAvailable;
     }
 }
