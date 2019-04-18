@@ -241,7 +241,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
             System.out.println("Yes########");
             isPortAvailable = false;
         } catch (IOException e) {
-
+            System.out.println("No########");
             isPortAvailable = true;
         }
 
