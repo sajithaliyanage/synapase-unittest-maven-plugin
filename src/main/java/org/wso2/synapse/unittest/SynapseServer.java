@@ -25,17 +25,27 @@ import java.util.ArrayList;
  */
 public class SynapseServer {
 
-    private String host;
-    private String unitTestPort;
-    private ArrayList<String> localServer = new ArrayList<>();
+    private String testServerType;
+    private String testServerHost;
+    private String testServerPort;
+    private String testServerPath;
+
+    /**
+     * Get server type.
+     *
+     * @return type of the server
+     */
+    String getServerType() {
+        return testServerType;
+    }
 
     /**
      * Get server host.
      *
      * @return host of the server
      */
-    String getHost() {
-        return host;
+    String getServerHost() {
+        return testServerHost;
     }
 
     /**
@@ -43,8 +53,17 @@ public class SynapseServer {
      *
      * @return port of the server
      */
-    String getUnitTestPort() {
-        return unitTestPort;
+    String getServerPort() {
+        return testServerPort;
+    }
+
+    /**
+     * Set server type.
+     *
+     * @param type of the server
+     */
+    public void setServerType(String type) {
+        this.testServerType = type;
     }
 
     /**
@@ -52,8 +71,8 @@ public class SynapseServer {
      *
      * @param host of the server
      */
-    public void setHost(String host) {
-        this.host = host;
+    public void setServerHost(String host) {
+        this.testServerHost = host;
     }
 
     /**
@@ -61,8 +80,8 @@ public class SynapseServer {
      *
      * @param port of the server
      */
-    public void setUnitTestPort(String port) {
-        this.unitTestPort = port;
+    public void setServerPort(String port) {
+        this.testServerPort = port;
     }
 
     /**
@@ -70,8 +89,8 @@ public class SynapseServer {
      *
      * @return local server details
      */
-    ArrayList<String> getLocalServer() {
-        return localServer;
+    String getServerPath() {
+        return testServerPath;
     }
 
     /**
@@ -79,7 +98,7 @@ public class SynapseServer {
      *
      * @param localServer local server details
      */
-    public void setLocalServer(ArrayList<String> localServer) {
-        this.localServer = localServer;
+    public void setServerPath(String localServer) {
+        this.testServerPath = localServer;
     }
 }

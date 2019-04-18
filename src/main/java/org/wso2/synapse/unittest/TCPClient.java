@@ -46,7 +46,10 @@ class TCPClient {
 
         try {
             clientSocket = new Socket(synapseHost, Integer.parseInt(synapsePort));
-            getLog().info("TCP socket connection has been established");
+            if (getLog().isDebugEnabled()) {
+                getLog().debug("TCP socket connection has been established");
+            }
+
         } catch (IOException e) {
             getLog().error("Error in initializing the socket", e);
         }
@@ -54,19 +57,20 @@ class TCPClient {
 
     /**
      * Method of receiving response from the synapse unit test agent.
+     *
+     * @return response from the unit testing server
      */
     String readData() {
 
-        getLog().info("Waiting for synapse unit test agent response");
+        if (getLog().isDebugEnabled()) {
+            getLog().debug("Waiting for synapse unit test agent response");
+        }
 
         try {
             InputStream inputStream = clientSocket.getInputStream();
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
 
-            String response = (String) objectInputStream.readObject();
-            getLog().info("Received unit test agent response - " + response);
-
-            return response;
+            return (String) objectInputStream.readObject();
         } catch (Exception e) {
             getLog().error("Error in getting response from the synapse unit test agent", e);
             return null;
@@ -86,7 +90,9 @@ class TCPClient {
             objectOutputStream.writeObject(messageToBeSent);
             outputStream.flush();
 
-            getLog().info("Artifact data and test cases data send to the synapse agent successfully");
+            if (getLog().isDebugEnabled()) {
+                getLog().debug("Artifact configurations and test cases data sent to the synapse agent successfully");
+            }
         } catch (IOException e) {
             getLog().error("Error while sending deployable data to the synapse agent ", e);
         }
@@ -104,6 +110,9 @@ class TCPClient {
         }
     }
 
+    /**
+     * Method of initiating logger.
+     */
     private static Log getLog() {
         if (log == null) {
             log = new SystemStreamLog();

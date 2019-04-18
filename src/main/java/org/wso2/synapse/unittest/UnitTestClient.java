@@ -28,22 +28,33 @@ class UnitTestClient {
 
     private static Log log;
 
+    /**
+     * private constructor of the UnitTestClient.
+     */
     private UnitTestClient() {
     }
 
     /**
      * static method of executing the synapse unit testing client.
+     *
+     * @param synapseTestCaseFilePath synapse test case file path
+     * @param synapseHost synapse unit test server host
+     * @param synapsePort synapse unit test server port
+     * @return response from the unit testing agent received via TCP transport
      */
     static String executeTests(String synapseTestCaseFilePath, String synapseHost, String synapsePort) {
-
-        getLog().info("Unit testing client started");
         String responseFromServer = null;
         try {
 
-            //process SynapseTestCase data for send to the server
+            //check whether unit test suite has test cases or not
             String deployableMessage = SynapseTestCaseFileReader.processArtifactData(synapseTestCaseFilePath);
+            if (deployableMessage != null && deployableMessage.equals(Constants.NO_TEST_CASES)) {
+                return deployableMessage;
+            }
 
+            //process SynapseTestCase data for send to the server
             if (deployableMessage != null) {
+//                getLog().debug(deployableMessage);
                 //create tcp connection, send SynapseTestCase file to server and get the response from the server
                 TCPClient tcpClient = new TCPClient(synapseHost, synapsePort);
                 tcpClient.writeData(deployableMessage);
@@ -64,6 +75,9 @@ class UnitTestClient {
         return responseFromServer;
     }
 
+    /**
+     * Method of initiating logger.
+     */
     private static Log getLog() {
         if (log == null) {
             log = new SystemStreamLog();
