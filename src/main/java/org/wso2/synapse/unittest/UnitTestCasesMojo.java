@@ -238,8 +238,10 @@ public class UnitTestCasesMojo extends AbstractMojo {
         boolean isPortAvailable;
         try (Socket socket = new Socket()) {
             socket.connect(new InetSocketAddress(synapseServer.getHost(), port));
+            System.out.println("Yes########");
             isPortAvailable = false;
         } catch (IOException e) {
+
             isPortAvailable = true;
         }
 
