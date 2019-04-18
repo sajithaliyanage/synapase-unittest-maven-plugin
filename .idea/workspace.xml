@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4d7e916-1f26-409b-8953-a8ac064b46f9" name="Default Changelist" comment="" />
+    <list default="true" id="e4d7e916-1f26-409b-8953-a8ac064b46f9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +41,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="152" column="24" selection-start-line="152" selection-start-column="24" selection-end-line="152" selection-end-column="24" />
+            <state relative-caret-position="368">
+              <caret line="161" column="12" selection-start-line="161" selection-start-column="12" selection-end-line="161" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#execute#0;class#UnitTestCasesMojo#0" />
@@ -48,7 +51,7 @@
                 <element signature="method#isAssertResults#0;class#UnitTestCasesMojo#0" />
                 <element signature="method#appendTestLogs#0;class#UnitTestCasesMojo#0" />
                 <element signature="method#checkPortAvailability#0;class#UnitTestCasesMojo#0" />
-                <marker date="1555591854938" expanded="true" signature="1606:1687" ph="..." />
+                <marker date="1555593345758" expanded="true" signature="1606:1687" ph="..." />
               </folding>
             </state>
           </provider>
@@ -226,6 +229,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24786325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -367,8 +371,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="152" column="24" selection-start-line="152" selection-start-column="24" selection-end-line="152" selection-end-column="24" />
+        <state relative-caret-position="368">
+          <caret line="161" column="12" selection-start-line="161" selection-start-column="12" selection-end-line="161" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#execute#0;class#UnitTestCasesMojo#0" />
@@ -377,7 +381,7 @@
             <element signature="method#isAssertResults#0;class#UnitTestCasesMojo#0" />
             <element signature="method#appendTestLogs#0;class#UnitTestCasesMojo#0" />
             <element signature="method#checkPortAvailability#0;class#UnitTestCasesMojo#0" />
-            <marker date="1555591854938" expanded="true" signature="1606:1687" ph="..." />
+            <marker date="1555593345758" expanded="true" signature="1606:1687" ph="..." />
           </folding>
         </state>
       </provider>
