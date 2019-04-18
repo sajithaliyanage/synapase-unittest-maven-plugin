@@ -159,7 +159,7 @@ public class UnitTestCasesMojo extends AbstractMojo {
             boolean isServerNotStarted = true;
 
             //set timeout time to 120 seconds
-            long timeoutExpiredMs = System.currentTimeMillis() + 120000;
+            long timeoutExpiredMs = System.currentTimeMillis() + 180000;
             while (isServerNotStarted) {
                 long waitMillis = timeoutExpiredMs - System.currentTimeMillis();
                 isServerNotStarted = checkPortAvailability(Integer.parseInt(unitTestPort));

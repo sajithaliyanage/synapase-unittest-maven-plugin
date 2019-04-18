@@ -38,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="796">
-              <caret line="240" column="43" selection-start-line="240" selection-start-column="43" selection-end-line="240" selection-end-column="43" />
+            <state relative-caret-position="1316">
+              <caret line="247" column="31" lean-forward="true" selection-start-line="247" selection-start-column="31" selection-end-line="247" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#execute#0;class#UnitTestCasesMojo#0" />
@@ -47,7 +47,7 @@
                 <element signature="method#getTestCasesFileNamesWithPaths#0;class#UnitTestCasesMojo#0" />
                 <element signature="method#isAssertResults#0;class#UnitTestCasesMojo#0" />
                 <element signature="method#appendTestLogs#0;class#UnitTestCasesMojo#0" />
-                <marker date="1555594154757" expanded="true" signature="1606:1687" ph="..." />
+                <marker date="1555596148361" expanded="true" signature="1606:1687" ph="..." />
               </folding>
             </state>
           </provider>
@@ -366,8 +366,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/wso2/synapse/unittest/UnitTestCasesMojo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="796">
-          <caret line="240" column="43" selection-start-line="240" selection-start-column="43" selection-end-line="240" selection-end-column="43" />
+        <state relative-caret-position="1316">
+          <caret line="247" column="31" lean-forward="true" selection-start-line="247" selection-start-column="31" selection-end-line="247" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#execute#0;class#UnitTestCasesMojo#0" />
@@ -375,7 +375,7 @@
             <element signature="method#getTestCasesFileNamesWithPaths#0;class#UnitTestCasesMojo#0" />
             <element signature="method#isAssertResults#0;class#UnitTestCasesMojo#0" />
             <element signature="method#appendTestLogs#0;class#UnitTestCasesMojo#0" />
-            <marker date="1555594154757" expanded="true" signature="1606:1687" ph="..." />
+            <marker date="1555596148361" expanded="true" signature="1606:1687" ph="..." />
           </folding>
         </state>
       </provider>
